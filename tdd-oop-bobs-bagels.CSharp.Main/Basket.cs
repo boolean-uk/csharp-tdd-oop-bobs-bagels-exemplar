@@ -11,56 +11,59 @@ namespace tdd_bobs_bagels.CSharp.Main
     {
         private int _maxCapacity;
 
-        private List<InventoryItem> _bagels;
+        private List<InventoryItem> _items;
 
         public Basket()
-        {            
-             _bagels = new List<InventoryItem>();
+        {
+            _items = new List<InventoryItem>();
             _maxCapacity = 5;
         }
 
-        public bool AddBagelToBasket(InventoryItem bagel)
+        public bool AddBagelToBasket(InventoryItem item)
         {
-            
-            if(_bagels.Count < _maxCapacity)
+
+            if (_items.Count < _maxCapacity)
             {
-                _bagels.Add(bagel);
-                
+                _items.Add(item);
+
                 return true;
             }
-            
+
             return false;
         }
 
-        public bool RemoveBagel(InventoryItem bagel)
+        public bool RemoveBagel(InventoryItem item)
         {
-            if(_bagels.Contains(bagel))
-            {            
-                _bagels.Remove(bagel);
+            if (_items.Contains(item))
+            {
+                _items.Remove(item);
                 return true;
             }
             return false;
-            
+
         }
 
-        public List<InventoryItem> Bagels { get { return _bagels.Where(x => x.Name=="Bagel").ToList(); } }
-        public int MaxCapacity 
-        { 
-            get 
-            { 
-                return _maxCapacity; 
-            } 
-            set 
-            {                 
+        public List<InventoryItem> Bagels { get { return _items.Where(x => x.Name == "Bagel").ToList(); } }
+        public int MaxCapacity
+        {
+            get
+            {
+                return _maxCapacity;
+            }
+            set
+            {
                 _maxCapacity = value;
-                _bagels.Clear();
+                _items.Clear();
 
-            } 
+            }
         }
         public string BasketStatus()
         {
-            return _bagels.Count == _maxCapacity ? "Basket Full" : "Basket Not Full";
+            return _items.Count == _maxCapacity ? "Basket Full" : "Basket Not Full";
         }
-
+        public List<InventoryItem> Items
+        {
+            get { return _items; }
+        }
     }
 }

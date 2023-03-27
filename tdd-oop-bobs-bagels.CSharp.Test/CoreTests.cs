@@ -52,10 +52,10 @@ namespace tdd_bobs_bagels.CSharp.Test
         {
             //q3
             Basket basket = new Basket();
-            basket.MaxCapacity = _invetory.GetBagels().Count;
+            basket.MaxCapacity = _invetory.GetInventoryItemByName("Bagel").Count;
             Assert.IsTrue(basket.MaxCapacity > 0);
 
-            foreach(InventoryItem b in _invetory.GetBagels())
+            foreach(InventoryItem b in _invetory.GetInventoryItemByName("Bagel"))
             {
                 basket.AddBagelToBasket(b);
             }
@@ -72,9 +72,9 @@ namespace tdd_bobs_bagels.CSharp.Test
         {
             //q4
             Basket basket = new Basket();
-            basket.MaxCapacity =_invetory.GetBagels().Count;
+            basket.MaxCapacity =_invetory.GetInventoryItemByName("Bagel").Count;
 
-            foreach (InventoryItem b in _invetory.GetBagels())
+            foreach (InventoryItem b in _invetory.GetInventoryItemByName("Bagel"))
             {
                 basket.AddBagelToBasket(b);
             }
@@ -83,13 +83,11 @@ namespace tdd_bobs_bagels.CSharp.Test
         [Test]
         public void BasketEmptiesWhenMaxCapacityChanges()
         {
-            //test sets maxcapacity to 100 and then fills 100 bagels
-            //test then changes maxcapacity to 3 and checks that the basket was emptied
-            //note: we can't have a bagel count = 100 when maxcapacity is set?!
-            Basket basket = new Basket();
-            basket.MaxCapacity = _invetory.GetBagels().Count;
 
-            foreach (InventoryItem b in _invetory.GetBagels())
+            Basket basket = new Basket();
+            basket.MaxCapacity = _invetory.GetInventoryItemByName("Bagel").Count;
+
+            foreach (InventoryItem b in _invetory.GetInventoryItemByName("Bagel").ToList())
             {
                 basket.AddBagelToBasket(b);
             }

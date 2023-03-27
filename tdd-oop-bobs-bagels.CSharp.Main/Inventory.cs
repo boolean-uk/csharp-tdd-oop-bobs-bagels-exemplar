@@ -35,17 +35,22 @@ namespace tdd_oop_bobs_bagels.CSharp.Main
                 new InventoryItem() { SKU = "FILH", Price = 0.12f, Name = "Filling", Variant = "Ham" }
             };
         }
+        public List<InventoryItem> GetInventoryItemByName(string name)
+        {
+            return _inventoryItems.Where(x => x.Name.ToLower()==name.ToLower()).ToList();
+        }
+        public List<InventoryItem> GetSkuType(string skuType)
+        {
+            return _inventoryItems.Where(x => x.SKU.ToLower() == skuType.ToLower()).ToList();
+        }
+        public bool DoesSkuExist(string skuType)
+        {
+            return _inventoryItems.Exists(x => x.SKU.ToLower() == skuType.ToLower());
+        }
         public List<InventoryItem> GetBagels()
         {
-            return _inventoryItems.Where(x => x.Name=="Bagel").ToList();
+            return _inventoryItems;
         }
-        public List<InventoryItem> GetFillings()
-        {
-            return _inventoryItems.Where(x => x.Name == "Filling").ToList();
-        }
-        public List<InventoryItem> GetCoffees()
-        {
-            return _inventoryItems.Where(x => x.Name == "Coffee").ToList();
-        }
+
     }
 }
