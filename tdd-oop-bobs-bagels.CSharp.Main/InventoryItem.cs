@@ -17,7 +17,7 @@ namespace tdd_oop_bobs_bagels.CSharp.Main
 
 
 		public string SKU { get => _sku; set => _sku = value; }				
-        public double Price { get => _price; set => _price = value; }
+        public double Price { get => Math.Round(_price,2); set => _price = value; }
 		public string Name { get => _name; set => _name = value; }
 		public string Variant { get => _variant; set => _variant = value; }
 
